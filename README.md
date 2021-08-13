@@ -11,11 +11,11 @@ Prof. Dr. Vinícius R. P. Borges
 1. Introdução ao Aprendizado de Máquina
 2. Extração de Características de Imagens
    
-      2.1. [Imagens: descritores básicos de forma, textura e cor](cap2_1_feature_extraction_text.ipynb)
+      2.1. [Descritores básicos de forma, textura e cor](cap2_1_feature_extraction_text.ipynb)
       
-      2.2. [Imagens: Bag-of-Features via Scale Invariant Feature Transform](cap2_2_feature_extraction_sift.ipynb)
+      2.2. [Bag-of-Features via Scale Invariant Feature Transform](cap2_2_feature_extraction_sift.ipynb)
       
-      2.3. [Imagens: Bag-of-Features via Local Binary Pattern](cap2_3_feature_extraction_lbp.ipynb)
+      2.3. [Bag-of-Features via Local Binary Pattern](cap2_3_feature_extraction_lbp.ipynb)
 3. Pré-processamento de Dados
 
       3.1. [Pré-processamento de Dados Tabulares](cap3_1_preprocessamento_dados.ipynb)
