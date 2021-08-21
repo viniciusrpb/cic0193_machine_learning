@@ -22,9 +22,16 @@ Prof. Dr. Vinícius R. P. Borges
       
       3.2. [Amostragem e Similaridade](cap3_2_amostragem_similaridade.ipynb)
 
-4. Extração de características e Pré-Processamento de Textos
+4. [Extração de características e Pré-Processamento de Textos](cap4_text_processing.ipynb)
 
-      4.1.
+
+5. Aprendizado Supervisionado
+
+      5.1. K-Vizinhos Mais Próximos
+      
+      5.2. Naive Bayes
+      
+      5.3. Árvores de Decisão e Random Forest
 
 
       
