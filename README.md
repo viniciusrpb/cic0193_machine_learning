@@ -29,7 +29,7 @@ Prof. Dr. Vinícius R. P. Borges
 
       5.1. K-Vizinhos Mais Próximos
       
-      5.2. Naive Bayes
+      5.2. [Naive Bayes](cap5_2_naive_bayes.ipynb) 
       
       5.3. Árvores de Decisão e Random Forest
 
