@@ -35,6 +35,12 @@ Prof. Dr. Vinícius R. P. Borges
       
       5.4. Máquinas de Vetores de Suporte
 
+6. Agrupamento (Clustering)
+
+      6.1. K-Means
+      
+      6.2. K-Medóides
+
 7. Avaliação de Performance de Modelos de Aprendizado de Máquina
 
       7.1. [Classificação](cap7_1_avaliacao_performance_classificacao.ipynb)
