@@ -45,4 +45,4 @@ Prof. Dr. Vinícius R. P. Borges
 
       8.1. [Perceptron (simples)](cap8_1_perceptron.ipynb)
       
-      8.2. [Feed-forward Multilayer Perceptron](cap8_2_multilayerperceptron.ipynb)
+      8.2. [Multilayer Perceptron](cap8_2_multilayerperceptron.ipynb)
