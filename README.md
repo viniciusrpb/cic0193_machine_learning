@@ -32,6 +32,17 @@ Prof. Dr. Vinícius R. P. Borges
       5.2. [Naive Bayes](cap5_2_naive_bayes.ipynb) 
       
       5.3. Árvores de Decisão e Random Forest
-
-
       
+      5.4. Máquinas de Vetores de Suporte
+
+7. Avaliação de Performance de Modelos de Aprendizado de Máquina
+
+      7.1. [Classificação](cap7_1_avaliacao_performance_classificacao.ipynb)
+
+      7.2. Clustering
+
+8. Redes Neurais Artificiais
+
+      8.1. [Perceptron (simples)](cap8_1_perceptron.ipynb)
+      
+      8.2. [Feed-forward Multilayer Perceptron](cap8_2_multilayer_perceptron.ipynb)
