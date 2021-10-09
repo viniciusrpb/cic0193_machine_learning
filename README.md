@@ -59,4 +59,4 @@ Prof. Dr. Vinícius R. P. Borges
 
       9.1. [Fundamentos de Convolução de Imagens](cap9_1_basics_convolution.ipynb)
       
-      9.2. [Primeiras Redes Neurais Convolucionais](cap9_2_first_cnn.ipynb)
+      9.2. [Primeiras Redes Neurais Convolucionais](cap9_2_first_cnns.ipynb)
