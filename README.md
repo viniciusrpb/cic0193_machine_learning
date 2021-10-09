@@ -1,4 +1,4 @@
-# CIC0193 - Machine Learning
+# CIC0193 - Fundamentos de Sistemas Inteligentes (Machine Learning)
 
 Material didático de apoio para a disciplina CIC0193 - Fundamentos de Sistemas Inteligentes, do Departamento de Ciência da Computação, da Universidade de Brasília.
 
@@ -9,6 +9,7 @@ Prof. Dr. Vinícius R. P. Borges
 ## Sumário
 
 1. Introdução ao Aprendizado de Máquina
+
 2. Extração de Características de Imagens
    
       2.1. [Descritores básicos de forma, textura e cor](cap2_1_feature_extraction_text.ipynb)
@@ -16,6 +17,7 @@ Prof. Dr. Vinícius R. P. Borges
       2.2. [Bag-of-Features via Scale Invariant Feature Transform](cap2_2_feature_extraction_sift.ipynb)
       
       2.3. [Bag-of-Features via Local Binary Pattern](cap2_3_feature_extraction_lbp.ipynb)
+      
 3. Pré-processamento de Dados
 
       3.1. [Pré-processamento de Dados Tabulares](cap3_1_preprocessamento_dados.ipynb)
@@ -52,3 +54,9 @@ Prof. Dr. Vinícius R. P. Borges
       8.1. [Perceptron (simples)](cap8_1_perceptron.ipynb)
       
       8.2. [Multilayer Perceptron](cap8_2_multilayerperceptron.ipynb)
+      
+9. Redes Neurais Convolucionais
+
+      9.1. [Fundamentos de Convolução de Imagens](cap9_1_basics_convolution.ipynb)
+      
+      9.2. [Multilayer Perceptron](cap9_2_first_cnn.ipynb)
