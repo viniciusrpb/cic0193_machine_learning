@@ -60,3 +60,7 @@ Prof. Dr. Vinícius R. P. Borges
       9.1. [Fundamentos de Convolução de Imagens](cap9_1_basics_convolution.ipynb)
       
       9.2. [Primeiras Redes Neurais Convolucionais](cap9_2_first_cnns.ipynb)
+
+      9.3. [Construindo uma AlexNet](cap9_3_alexnet.ipynb)
+      
+      9.4. [Transferência de Aprendizado](cap9_4_transfer_learning_googlenet.ipynb)
