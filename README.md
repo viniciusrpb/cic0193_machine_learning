@@ -49,13 +49,13 @@ Prof. Dr. Vinícius R. P. Borges
 
       7.2. Clustering
 
-8. Redes Neurais Artificiais
+8. Redes Neurais Artificiais (*Artificial Neural Networks - ANN*)
 
       8.1. [Perceptron (simples)](cap8_1_perceptron.ipynb)
       
       8.2. [Multilayer Perceptron](cap8_2_multilayerperceptron.ipynb)
       
-9. Redes Neurais Convolucionais
+9. Redes Neurais Convolucionais (*Convolutional Neural Networks - CNN*)
 
       9.1. [Fundamentos de Convolução de Imagens](cap9_1_basics_convolution.ipynb)
       
@@ -64,3 +64,25 @@ Prof. Dr. Vinícius R. P. Borges
       9.3. [Construindo uma AlexNet](cap9_3_alexnet_cifar10.ipynb)
       
       9.4. [Transferência de Aprendizado](cap9_4_transfer_learning.ipynb)
+
+10. Redes Neurais Recorrentes (*Recurrent Neural Networks - RNN*)
+
+      9.1. [RNN do Zero](cap10_1_rnn_from_scratch.ipynb)
+      
+      9.2. [Modelo de Linguagem Baseado em RNN](cap10_2_first_rnns.ipynb)
+
+      9.3. [Long Short Term Memory](cap10_3_lstm_and_bilstm.ipynb)
+      
+      9.4. Gated Recurrent Unit (seminário)
+
+11. Modelos Generativos (*Generative Models*)
+
+      11.1. [Autoencoders](cap11_1_simple_autoencoder.ipynb)
+
+      11.2. [Variational Autoencoders](cap11_2_variational_autoencoder.ipynb)
+      
+      11.3. Generative Adversarial Networks (seminário)
+
+12. Transformadores (*Transformers*)
+
+      12.1. [Transformers com BERT](cap12_bert.ipynb)
