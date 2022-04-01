@@ -2,6 +2,8 @@
 
 Material didático de apoio para a disciplina CIC0193 - Fundamentos de Sistemas Inteligentes, do Departamento de Ciência da Computação, da Universidade de Brasília.
 
+Datasets [aqui](https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research).
+
 ## Autores
 
 Prof. Dr. Vinícius R. P. Borges
