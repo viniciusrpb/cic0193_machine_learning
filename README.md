@@ -87,4 +87,4 @@ Prof. Dr. Vinícius R. P. Borges
 
 12. Transformadores (*Transformers*)
 
-      12.1. [Transformers com BERT](cap12_bert.ipynb)
+      12.1. [Transformers com BERT](cap12_3_sentiment_analysis_bert.ipynb)
