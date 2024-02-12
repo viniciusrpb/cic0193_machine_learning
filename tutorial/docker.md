@@ -32,6 +32,24 @@ docker run hello-world
 ## Comandos básicos do Docker
 
 
-##  
+## Baixando a imagem
+
+
+## Criando o Dockerfile
+
+Seja o arquivo ```script.py``` a ser executado para rodar os experimentos. Prepare o arquivo "Dockerfile" (sem formato) com o seguinte conteúdo:
+
+```
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Run app.py when the container launches
+CMD ["python3", "script.py"]
+```
 
 
