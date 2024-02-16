@@ -31,25 +31,77 @@ docker run hello-world
 
 ## Comandos básicos do Docker
 
+Verificar todas as imagens:
 
-## Baixando a imagem
+```
+docker image ls
+```
 
+Verificar todos os containers:
+
+```
+docker container ls
+```
 
 ## Criando o Dockerfile
 
-Seja o arquivo ```script.py``` a ser executado para rodar os experimentos. Prepare o arquivo "Dockerfile" (sem formato) com o seguinte conteúdo:
+Prepare um arquivo denominado "Dockerfile" em um editor de texto de sua preferência, sem formato e exatamente com esse nome, com o seguinte conteúdo:
 
 ```
-FROM tensorflow/tensorflow:latest-gpu-py3
+FROM tensorflow/tensorflow:latest-gpu
 
-# Set the working directory to /app
+RUN mkdir /app
+
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Run app.py when the container launches
-CMD ["python3", "script.py"]
+# baixar o arquivo da versao Python 3.10
+RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz && \
+    tar -xzf Python-3.10.2.tgz && \
+    cd Python-3.10.2 && \
+    ./configure --enable-optimizations && \
+    make install
+
+# instalacao das APIs para deep learning
+
+RUN pip install --upgrade pip
+
+RUN pip install pandas
+
+RUN pip install scikit-learn
+
+RUN pip install matplotlib
+
+RUN pip install tensorflow_addons
+
+RUN pip install keras-tuner
+
+CMD [ "python", "arquivo.py"]
 ```
+
+Observe que há uma atualização da versão do Python dentro do container Docker. Esse Dockerfile já emprega uma imagem de base do tensorflow com suporte para GPU. O arquivo ``arquivo.py'' é o arquivo Python a ser executado, e que deve ter os experimentos.
+
+Deixe o Dockerfile dentro da pasta em que você quer rodar os experimentos. Em seguida, é hora de fazer o build da imagem. No Terminal do Linux, digite:
+
+```
+docker build -t NOME_CONTAINER
+```
+Digite o comando
+
+![Docker Images](imgs/docker_images.png)
+
+Finalmente, para rodar o container Docker em modo *foreground*, utilize o comando:
+
+```
+docker run NOME_CONTAINER:TAG
+```
+
+Caso queira rodar o container Docker em modo *background*, utilize o comando:
+
+```
+docker run -d NOME_CONTAINER:TAG
+```
+
 
 
