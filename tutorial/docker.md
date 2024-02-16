@@ -43,6 +43,12 @@ Verificar todos os containers:
 docker container ls
 ```
 
+Limpeza do espaço em disco:
+
+```
+docker builder prune
+```
+
 ## Criando o Dockerfile
 
 Prepare um arquivo denominado "Dockerfile" em um editor de texto de sua preferência, sem formato e exatamente com esse nome, com o seguinte conteúdo:
