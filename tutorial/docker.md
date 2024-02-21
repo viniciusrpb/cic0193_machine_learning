@@ -31,25 +31,41 @@ docker run hello-world
 
 ## Comandos básicos do Docker
 
-Verificar todas as imagens:
+Verificar todas as imagens existentes no Docker:
 
 ```
 docker image ls
 ```
 
-Verificar todos os containers:
+Verificar todos os containers existentes no Docker:
 
 ```
 docker container ls
 ```
 
-Limpeza do espaço em disco:
+Para verificar o espaço utilizado em disco das imagens, dos containers e da cache, digite no Terminal do Linux:
+
+```
+docker system df
+```
+
+Para fazer a limpeza apenas da cache (build do Docker):
 
 ```
 docker builder prune
 ```
 
-## Criando o Dockerfile
+Para fazer a limpeza do espaço em memória ocioso (imagens, containers e cache inutilizadas), digite:
+
+```
+docker system prune
+```
+
+## Estratégia 1: Rodando
+
+Nesta estratégia, colocamos todos os arquivos de um projeto que se deseja executar experimentos, fazemos a cópia de todos para o container Docker, e a execução é feita inteiramente por lá. Após a execução dos experimentos, deve-se recuperar os arquivos na pasta ```app/```.
+
+### Criando o Dockerfile
 
 Prepare um arquivo denominado "Dockerfile" em um editor de texto de sua preferência, sem formato e exatamente com esse nome, com o seguinte conteúdo:
 
@@ -105,6 +121,70 @@ Finalmente, para rodar o container Docker em modo *foreground*, utilize o comand
 
 ```
 docker run NOME_CONTAINER:TAG
+```
+
+Caso queira rodar o container Docker em modo *background*, utilize o comando:
+
+```
+docker run -d NOME_CONTAINER:TAG
+```
+
+## Estratégia 2: Rodando python script for fora da imagem
+
+Essa estratégia é vantajosa por não ter que criar uma nova imagem cada vez que um experimento diferente ter de ser executado.
+
+### Criando o Dockerfile
+
+Prepare um arquivo denominado "Dockerfile" em um editor de texto de sua preferência, sem formato e exatamente com esse nome, com o seguinte conteúdo:
+
+```
+FROM tensorflow/tensorflow:latest-gpu
+
+WORKDIR /usr/src/app
+
+RUN apt install wget
+
+RUN apt-get update
+
+RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz && \
+    tar -xzf Python-3.10.2.tgz && \
+    cd Python-3.10.2 && \
+    ./configure --enable-optimizations && \
+    make altinstall
+
+RUN pip install --upgrade pip
+
+RUN pip install pandas
+
+RUN pip install scikit-learn
+
+RUN pip install matplotlib
+
+RUN pip install tensorflow_addons
+
+RUN pip install keras-tuner
+
+RUN pip install opencv-python
+
+RUN pip install opencv-python-headless
+```
+
+Observe que há uma atualização da versão do Python dentro do container Docker. Esse Dockerfile já emprega uma imagem de base do tensorflow com suporte para GPU. O arquivo ``arquivo.py'' é o arquivo Python a ser executado, e que deve ter os experimentos.
+
+Deixe o Dockerfile dentro da pasta em que você quer rodar os experimentos. Em seguida, é hora de fazer o build da imagem. No Terminal do Linux, digite:
+
+```
+docker build -t NOME_CONTAINER .
+```
+
+Digite o comando
+
+![Docker Images](imgs/docker_images.png)
+
+Finalmente, para rodar o container Docker em modo *foreground*, utilize o comando:
+
+```
+docker run -it --rm --name tf_single_script -v "$PWD":/usr/src/app -w /usr/src/app NOME_CONTAINER:TAG python script.py
 ```
 
 Caso queira rodar o container Docker em modo *background*, utilize o comando:
