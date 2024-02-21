@@ -27,8 +27,6 @@ Verifique se o docker pode ser executado sem ser pelo usuário ```root```:
 ```
 docker run hello-world
 ```
-
-
 ## Comandos básicos do Docker
 
 Verificar todas as imagens existentes no Docker:
@@ -61,9 +59,9 @@ Para fazer a limpeza do espaço em memória ocioso (imagens, containers e cache 
 docker system prune
 ```
 
-## Estratégia 1: Rodando
+## Estratégia 1: Copiar todos os fontes e dados para o Container Docker
 
-Nesta estratégia, colocamos todos os arquivos de um projeto que se deseja executar experimentos, fazemos a cópia de todos para o container Docker, e a execução é feita inteiramente por lá. Após a execução dos experimentos, deve-se recuperar os arquivos na pasta ```app/```.
+Nesta estratégia, colocamos todos os arquivos de um projeto que se deseja executar experimentos, fazemos a cópia de todos para o container Docker, em uma pasta chamada ```app/```. Depois, especificamos dentro do Dockerfile o comando para execução dos experimentos no container. Após a execução dos experimentos, deve-se recuperar os arquivos na pasta ```app/```.
 
 ### Criando o Dockerfile
 
@@ -79,6 +77,9 @@ WORKDIR /app
 COPY . /app
 
 # baixar o arquivo da versao Python 3.10
+
+RUN apt install wget
+
 RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz && \
     tar -xzf Python-3.10.2.tgz && \
     cd Python-3.10.2 && \
@@ -140,8 +141,6 @@ Prepare um arquivo denominado "Dockerfile" em um editor de texto de sua preferê
 ```
 FROM tensorflow/tensorflow:latest-gpu
 
-WORKDIR /usr/src/app
-
 RUN apt install wget
 
 RUN apt-get update
@@ -152,21 +151,25 @@ RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz && \
     ./configure --enable-optimizations && \
     make altinstall
 
-RUN pip install --upgrade pip
+RUN ln -sf /usr/local/python3/bin/python3.10 /usr/bin/python3
 
-RUN pip install pandas
+WORKDIR /usr/src/app
 
-RUN pip install scikit-learn
+RUN pip3 install --upgrade pip
 
-RUN pip install matplotlib
+RUN pip3 install pandas
 
-RUN pip install tensorflow_addons
+RUN pip3 install scikit-learn
 
-RUN pip install keras-tuner
+RUN pip3 install matplotlib
 
-RUN pip install opencv-python
+RUN pip3 install tensorflow_addons
 
-RUN pip install opencv-python-headless
+RUN pip3 install keras-tuner
+
+RUN pip3 install opencv-python
+
+RUN pip3 install opencv-python-headless
 ```
 
 Observe que há uma atualização da versão do Python dentro do container Docker. Esse Dockerfile já emprega uma imagem de base do tensorflow com suporte para GPU. O arquivo ``arquivo.py'' é o arquivo Python a ser executado, e que deve ter os experimentos.
@@ -181,7 +184,14 @@ Digite o comando
 
 ![Docker Images](imgs/docker_images.png)
 
+Caso necessite copiar os dados (em arquivo único ou como uma pasta), execute o comando:
+
+```
+docker cp src_path container:dest_path
+```
+
 Finalmente, para rodar o container Docker em modo *foreground*, utilize o comando:
+
 
 ```
 docker run -it --rm --name tf_single_script -v "$PWD":/usr/src/app -w /usr/src/app NOME_CONTAINER:TAG python script.py
