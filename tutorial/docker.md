@@ -83,6 +83,10 @@ RUN pip install tensorflow_addons
 
 RUN pip install keras-tuner
 
+RUN pip install opencv-python
+
+RUN pip install opencv-python-headless
+
 CMD [ "python", "arquivo.py"]
 ```
 
@@ -91,7 +95,7 @@ Observe que há uma atualização da versão do Python dentro do container Docke
 Deixe o Dockerfile dentro da pasta em que você quer rodar os experimentos. Em seguida, é hora de fazer o build da imagem. No Terminal do Linux, digite:
 
 ```
-docker build -t NOME_CONTAINER
+docker build -t NOME_CONTAINER .
 ```
 Digite o comando
 
