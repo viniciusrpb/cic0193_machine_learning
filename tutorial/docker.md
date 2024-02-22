@@ -141,19 +141,31 @@ Prepare um arquivo denominado "Dockerfile" em um editor de texto de sua preferê
 ```
 FROM tensorflow/tensorflow:latest-gpu
 
-RUN apt install wget
+# baixar o arquivo da versao Python 3.10
 
-RUN apt-get update
+RUN apt update
+
+RUN apt install -y libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev libtk8.6 libgdm-dev libdb4o-cil-dev libpcap-dev
+
+RUN apt install -y wget
+
+RUN apt purge --auto-remove python
 
 RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz && \
     tar -xzf Python-3.10.2.tgz && \
     cd Python-3.10.2 && \
     ./configure --enable-optimizations && \
-    make altinstall
+    make install
 
-RUN ln -sf /usr/local/python3/bin/python3.10 /usr/bin/python3
+RUN apt install -y python3-pip
 
-WORKDIR /usr/src/app
+# instalacao das APIs para deep learning
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY . /app
 
 RUN pip3 install --upgrade pip
 
@@ -161,15 +173,21 @@ RUN pip3 install pandas
 
 RUN pip3 install scikit-learn
 
+RUN pip3 install opencv-python
+
+RUN pip3 install opencv-python-headless
+
 RUN pip3 install matplotlib
+
+RUN pip3 install pandas
+
+RUN pip3 install -U tensorflow
 
 RUN pip3 install tensorflow_addons
 
 RUN pip3 install keras-tuner
 
-RUN pip3 install opencv-python
-
-RUN pip3 install opencv-python-headless
+CMD [ "python3", "arquivo.py"]
 ```
 
 Observe que há uma atualização da versão do Python dentro do container Docker. Esse Dockerfile já emprega uma imagem de base do tensorflow com suporte para GPU. O arquivo ``arquivo.py'' é o arquivo Python a ser executado, e que deve ter os experimentos.
