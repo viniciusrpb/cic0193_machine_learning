@@ -103,8 +103,6 @@ RUN pip install keras-tuner
 RUN pip install opencv-python
 
 RUN pip install opencv-python-headless
-
-CMD [ "python", "arquivo.py"]
 ```
 
 Observe que há uma atualização da versão do Python dentro do container Docker. Esse Dockerfile já emprega uma imagem de base do tensorflow com suporte para GPU. O arquivo ``arquivo.py'' é o arquivo Python a ser executado, e que deve ter os experimentos.
@@ -114,6 +112,7 @@ Deixe o Dockerfile dentro da pasta em que você quer rodar os experimentos. Em s
 ```
 docker build -t NOME_CONTAINER .
 ```
+
 Digite o comando
 
 ![Docker Images](imgs/docker_images.png)
@@ -121,13 +120,15 @@ Digite o comando
 Finalmente, para rodar o container Docker em modo *foreground*, utilize o comando:
 
 ```
-docker run NOME_CONTAINER:TAG
+docker run -it --rm -v $PWD:/tmp -w /tmp NOME_CONTAINER:TAG python ./script.py
 ```
+
+Na imagem acima, ```NOME_CONTAINER:TAG``` corresponde a ```tf_experiments:latest```.
 
 Caso queira rodar o container Docker em modo *background*, utilize o comando:
 
 ```
-docker run -d NOME_CONTAINER:TAG
+docker run -d -it --rm -v $PWD:/tmp -w /tmp NOME_CONTAINER:TAG python ./script.py
 ```
 
 ## Estratégia 2: Rodando python script for fora da imagem
