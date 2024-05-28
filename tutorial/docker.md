@@ -4,10 +4,7 @@ Todos os passos abaixo foram realizados no Linux.
 
 ## Instalação do Docker
 
-```
-sudo apt update
-sudo apt install docker
-```
+Siga as instruções exatamente como consta [aqui](https://docs.docker.com/engine/install/ubuntu/).
 
 Em seguida, com o usuário administrador (root), adicione o seu nome de usuário para permitir que você roder os comandos docker sem o ```sudo```:
 
@@ -27,6 +24,7 @@ Verifique se o docker pode ser executado sem ser pelo usuário ```root```:
 ```
 docker run hello-world
 ```
+
 ## Comandos básicos do Docker
 
 Verificar todas as imagens existentes no Docker:
@@ -76,33 +74,19 @@ WORKDIR /app
 
 COPY . /app
 
-# baixar o arquivo da versao Python 3.10
+RUN pip3 install --upgrade pip
 
-RUN apt install wget
+RUN pip3 install pandas
 
-RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz && \
-    tar -xzf Python-3.10.2.tgz && \
-    cd Python-3.10.2 && \
-    ./configure --enable-optimizations && \
-    make install
+RUN pip3 install scikit-learn
 
-# instalacao das APIs para deep learning
+RUN pip3 install matplotlib
 
-RUN pip install --upgrade pip
+RUN pip3 install transformer
 
-RUN pip install pandas
+RUN pip3 install opencv-contrib-python
 
-RUN pip install scikit-learn
-
-RUN pip install matplotlib
-
-RUN pip install tensorflow_addons
-
-RUN pip install keras-tuner
-
-RUN pip install opencv-python
-
-RUN pip install opencv-python-headless
+RUN pip3 install keras-tuner
 ```
 
 Observe que há uma atualização da versão do Python dentro do container Docker. Esse Dockerfile já emprega uma imagem de base do tensorflow com suporte para GPU. O arquivo ``arquivo.py'' é o arquivo Python a ser executado, e que deve ter os experimentos.
@@ -110,8 +94,10 @@ Observe que há uma atualização da versão do Python dentro do container Docke
 Deixe o Dockerfile dentro da pasta em que você quer rodar os experimentos. Em seguida, é hora de fazer o build da imagem. No Terminal do Linux, digite:
 
 ```
-docker build -t NOME_CONTAINER .
+docker build --file Dockerfile_name -t NOME_CONTAINER . 
 ```
+
+em que ```Dockerfile_name``` é o nome do arquivo do Dockerfile.
 
 Digite o comando
 
